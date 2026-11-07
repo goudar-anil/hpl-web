@@ -1,44 +1,22 @@
 
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Text } from "@chakra-ui/react";
 
-export default function AppFooter() {
+export function AppFooter() {
   return (
     <Box
-      component="footer"
-      sx={{
-        bgcolor: "#101D32",
-        color: "#FFFFFF",
-        py: 4,
-        mt: "auto",
-      }}
+      as="footer"
+      bg="brand.royalBlue"
+      color="brand.white"
+      px={4}
+      py={6}
+      textAlign="center"
     >
-      <Container maxWidth="lg">
-        <Typography
-          sx={{
-            fontFamily: "Space Grotesk",
-            fontWeight: 700,
-            fontSize: 22,
-          }}
-        >
-          HPL <Box component="span" sx={{ color: "#B7F36B" }}>SEASON 3</Box>
-        </Typography>
-
-        <Typography sx={{ color: "#AAB7C9", mt: 1, fontSize: 13 }}>
-          The Game. The Glory. The Legacy.
-        </Typography>
-
-        <Box
-          sx={{
-            borderTop: "1px solid rgba(255,255,255,0.12)",
-            mt: 3,
-            pt: 2,
-          }}
-        >
-          <Typography sx={{ color: "#AAB7C9", fontSize: 12 }}>
-            © {new Date().getFullYear()} HPL Season 3. All rights reserved.
-          </Typography>
-        </Box>
-      </Container>
+      <Text fontSize="sm" fontWeight="medium">
+        Hadagali Premier League
+      </Text>
+      <Text fontSize="xs" color="brand.slate" mt={1}>
+        Organised by Shree Rudreshwara Cricket Club, Hadagali
+      </Text>
     </Box>
   );
 }

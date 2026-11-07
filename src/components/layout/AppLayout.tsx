@@ -1,25 +1,20 @@
 
-import { Box } from "@mui/material";
+import type { PropsWithChildren } from "react";
+import { Box, Flex } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
-import AppHeader from "./AppHeader";
-import AppFooter from "./AppFooter";
+import { AppHeader } from "./AppHeader";
+import { AppFooter } from "./AppFooter";
 
-export default function AppLayout() {
+export function AppLayout({ children }: PropsWithChildren) {
   return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <Flex minH="100vh" direction="column">
       <AppHeader />
 
-      <Box component="main" sx={{ flexGrow: 1 }}>
-        <Outlet />
+      <Box as="main" flex="1" w="full">
+        {children ?? <Outlet />}
       </Box>
 
       <AppFooter />
-    </Box>
+    </Flex>
   );
 }
