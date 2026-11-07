@@ -7,6 +7,29 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
+## Calling APIs
+
+Import the shared API service from any component or module:
+
+```tsx
+import { api } from "../services/api";
+
+type Player = {
+  id: string;
+  name: string;
+};
+
+const players = await api.get<Player[]>("/players");
+```
+
+The service also provides `post`, `put`, `patch`, and `delete` methods. JSON
+request bodies are serialized automatically, and failed HTTP responses throw
+an `ApiError` with the response status and data.
+
+Set `VITE_API_BASE_URL` in your environment to configure the API host, for
+example `https://api.example.com`. When it is unset, request paths are sent
+to the current origin.
+
 ## React Compiler
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
